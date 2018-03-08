@@ -5,6 +5,7 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
+    "test": "jest",
     "run-server": "node lib/js/re/Index.bs.js"
   },
   "keywords": [
@@ -16,9 +17,11 @@
     "bs-platform": "^2.2.2"
   },
   "dependencies": {
+    "@glennsl/bs-jest": "^0.4.2",
     "bs-fetch": "^0.2.1",
     "bs-node": "buckletypes/bs-node",
     "es6-promise": "^4.2.4",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "jest": "^22.4.2"
   }
 }

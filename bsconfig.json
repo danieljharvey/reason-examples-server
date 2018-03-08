@@ -1,17 +1,25 @@
 {
   "name": "reason-examples-server",
   "version": "0.1.0",
-  "sources": {
-    "dir": "re",
-    "subdirs": true
-  },
+  "sources": [
+    {
+      "dir": "re",
+      "subdirs": true
+    },
+    {
+      "dir": "__tests__",
+      "subdirs": true,
+      "type": "dev"
+    }
+  ],
   "package-specs": {
     "module": "commonjs",
     "in-source": false
   },
   "suffix": ".bs.js",
   "bs-dependencies": [
-    "bs-fetch"
+    "bs-fetch",
+    "@glennsl/bs-jest"
   ],
   "warnings": {
     "error": "+101"
