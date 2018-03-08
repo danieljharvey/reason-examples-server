@@ -19,5 +19,11 @@ npm run start
 npm run run-server
 ```
 
+# Tests
+
+```
+npm run test
+```
+
 # Editor
 If you use `vscode`, Press `Windows + Shift + B` it will build automatically

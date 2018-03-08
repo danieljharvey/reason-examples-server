@@ -10,3 +10,39 @@ describe("arrayFind", () => {
     expect(LoadConfig.arrayFind(a => a > 6, testArray)) |> toEqual(None)
   );
 });
+
+describe("beforeCharEquals", () => {
+  open Expect;
+  test("it finds the key", () =>
+    expect(LoadConfig.beforeCharEquals('=', "horses=no", "horses"))
+    |> toEqual(Some("horses"))
+  );
+  test("it finds no key", () =>
+    expect(LoadConfig.beforeCharEquals('=', "horses=no", "dogs"))
+    |> toEqual(None)
+  );
+});
+
+describe("afterCharValue", () => {
+  open Expect;
+  test("it finds the value", () =>
+    expect(LoadConfig.afterCharValue('=', "horses=no", "horses"))
+    |> toEqual(Some("no"))
+  );
+  test("it finds no value", () =>
+    expect(LoadConfig.afterCharValue('=', "horses=no", "dogs"))
+    |> toEqual(None)
+  );
+});
+
+describe("ending", () => {
+  open Expect;
+  test("Works as expected", () =>
+    expect(LoadConfig.ending("chewing", "chewing=gum"))
+    |> toEqual(Some("gum"))
+  );
+  test("Doesn't explode", () =>
+    expect(LoadConfig.ending("chewingmsdfsdfsdf", "chewing=gum"))
+    |> toEqual(None)
+  );
+});
