@@ -1,6 +1,6 @@
-# Basic Reason Template
+# Reason Examples Server
 
-Hello! This project allows you to quickly get started with Reason and BuckleScript. If you wanted a more sophisticated version, try the `react` template (`bsb -theme react -init .`).
+Hello! I am making a website of Reason code examples for the standard library because I am dull. This will be the backend. It will fetch the content from Contentful and then make it available through GraphQL like some sort of big time pro web stack thing.
 
 # Build
 ```
@@ -13,6 +13,11 @@ npm run build
 npm run start
 ```
 
+# Run server
+
+```
+npm run run-server
+```
 
 # Editor
 If you use `vscode`, Press `Windows + Shift + B` it will build automatically
