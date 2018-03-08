@@ -46,3 +46,15 @@ describe("ending", () => {
     |> toEqual(None)
   );
 });
+
+describe("findArgument", () => {
+  open Expect;
+  let testArray = [|"horses=yeah", "dogs=what", "cheeses=pleases"|];
+  test("Works as expected", () =>
+    expect(LoadConfig.findArgument("horses", testArray))
+    |> toEqual(Some("yeah"))
+  );
+  test("Doesn't explode", () =>
+    expect(LoadConfig.findArgument("pauses", testArray)) |> toEqual(None)
+  );
+});

@@ -1,13 +1,3 @@
-/*
-
- external readFileAsUtf8Sync :
-   string -> (_[@bs.as "utf8"]) ->
-   string = "readFileSync"
- [@@bs.val] [@@bs.module "fs"]
-
- */
-/*let findArgument = (argv: array(string), key: string) : option(string) =>
-  arrayFind(beforeChar('=')); */
 let arrayFind = (f, a) => {
   let list = Array.to_list(a);
   List.exists(f, list) ? Some(List.find(f, list)) : None;
@@ -46,3 +36,17 @@ let afterCharValue =
   | Some(foundString) => ending(foundString, string)
   | _ => None
   };
+
+let isItThere = (char, string, find) : bool =>
+  switch (beforeCharEquals('=', string, find)) {
+  | None => false
+  | _ => true
+  };
+
+let findArgument = (key: string, argv: array(string)) : option(string) => {
+  let found = arrayFind(str => isItThere('=', str, key), argv);
+  switch (found) {
+  | Some(foundStr) => afterCharValue('=', foundStr, key)
+  | _ => None
+  };
+};
