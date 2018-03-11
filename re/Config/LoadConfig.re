@@ -50,3 +50,20 @@ let findArgument = (key: string, argv: array(string)) : option(string) => {
   | _ => None
   };
 };
+
+let sequenceFunc = (total, item) =>
+  switch (total) {
+  | Some(a) =>
+    switch (item) {
+    | Some(b) => Some(List.append([b], a))
+    | None => None
+    }
+  | _ => None
+  };
+
+let sequence = (options: list(option('a))) : option(list('a)) =>
+  List.fold_right(sequenceFunc, options, []);
+/* pass in all data, and keys you want, passes back Some of all of them or None if any are missing */
+/*let getOptionList = (keys: list(string), argv: array(string)) => {
+
+  };*/

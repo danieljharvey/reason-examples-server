@@ -2,11 +2,11 @@
 
 Js.log("Let's fetch the content please");
 
-let accessToken = "";
+let accessToken = LoadConfig.findArgument("accessToken", Node.Process.argv);
 
-let spaceIdentifier = "";
+let spaceIdentifier = LoadConfig.findArgument("spaceID", Node.Process.argv);
 
-let contentfulUrl =
+let contentfulUrl = (spaceIdentifier: string, accessToken: string) =>
   "https://cdn.contentful.com/spaces/"
   ++ spaceIdentifier
   ++ "?access_token="

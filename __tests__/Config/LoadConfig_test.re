@@ -58,3 +58,19 @@ describe("findArgument", () => {
     expect(LoadConfig.findArgument("pauses", testArray)) |> toEqual(None)
   );
 });
+
+describe("sequence", () => {
+  open Expect;
+  let testList = [Some(1), Some(2), Some(3)];
+  test("Works with all working", () =>
+    expect(LoadConfig.sequence(testList) |> toEqual(Some([1, 2, 3])))
+  );
+  let testBroken = [Some(1), Some(2), None];
+  test("Works with some broken", () =>
+    expect(LoadConfig.sequence(testList) |> toEqual(None))
+  );
+  let empty = [];
+  test("Works with empty", () =>
+    expect(LoadConfig.sequence(testList) |> toEqual(None))
+  );
+});
