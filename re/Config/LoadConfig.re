@@ -37,33 +37,28 @@ let afterCharValue =
   | _ => None
   };
 
+let optionOr = (default: 'a, option: option('a)) : 'a =>
+  switch (option) {
+  | Some(a) => a
+  | None => default
+  };
+
 let isItThere = (char, string, find) : bool =>
-  switch (beforeCharEquals('=', string, find)) {
+  switch (beforeCharEquals(char, string, find)) {
   | None => false
   | _ => true
   };
 
-let findArgument = (key: string, argv: array(string)) : option(string) => {
+let findArgument = (key: string, argv: array(string)) : string => {
   let found = arrayFind(str => isItThere('=', str, key), argv);
   switch (found) {
-  | Some(foundStr) => afterCharValue('=', foundStr, key)
-  | _ => None
+  | Some(foundStr) => optionOr("", afterCharValue('=', foundStr, key))
+  | _ => ""
   };
 };
 
-let sequenceFunc = (total, item) =>
-  switch (total) {
-  | Some(a) =>
-    switch (item) {
-    | Some(b) => Some(List.append([b], a))
-    | None => None
-    }
-  | _ => None
+let allSome = x =>
+  switch (x) {
+  | None => false
+  | _ => true
   };
-
-let sequence = (options: list(option('a))) : option(list('a)) =>
-  List.fold_right(sequenceFunc, options, []);
-/* pass in all data, and keys you want, passes back Some of all of them or None if any are missing */
-/*let getOptionList = (keys: list(string), argv: array(string)) => {
-
-  };*/

@@ -51,26 +51,9 @@ describe("findArgument", () => {
   open Expect;
   let testArray = [|"horses=yeah", "dogs=what", "cheeses=pleases"|];
   test("Works as expected", () =>
-    expect(LoadConfig.findArgument("horses", testArray))
-    |> toEqual(Some("yeah"))
+    expect(LoadConfig.findArgument("horses", testArray)) |> toEqual("yeah")
   );
   test("Doesn't explode", () =>
-    expect(LoadConfig.findArgument("pauses", testArray)) |> toEqual(None)
-  );
-});
-
-describe("sequence", () => {
-  open Expect;
-  let testList = [Some(1), Some(2), Some(3)];
-  test("Works with all working", () =>
-    expect(LoadConfig.sequence(testList) |> toEqual(Some([1, 2, 3])))
-  );
-  let testBroken = [Some(1), Some(2), None];
-  test("Works with some broken", () =>
-    expect(LoadConfig.sequence(testList) |> toEqual(None))
-  );
-  let empty = [];
-  test("Works with empty", () =>
-    expect(LoadConfig.sequence(testList) |> toEqual(None))
+    expect(LoadConfig.findArgument("pauses", testArray)) |> toEqual("")
   );
 });
