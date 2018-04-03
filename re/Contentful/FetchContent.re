@@ -19,12 +19,12 @@ let contentfulUrl = (restCommand: string) =>
   ++ "?access_token="
   ++ accessToken;
 
-let doQuery = (url: string) => {
+let doQuery = (url: string, callback) => {
   Js.log2("Query...", url);
   Js.Promise.(
     Fetch.fetch(url)
     |> then_(Fetch.Response.text)
-    |> then_(text => print_endline(text) |> resolve)
+    |> then_(text => resolve(callback(text)))
   );
 };
 
