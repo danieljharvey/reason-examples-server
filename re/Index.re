@@ -1,16 +1,15 @@
 /* starting point */
 let main = () => {
-  /*FetchContent.doQuery(FetchContent.contentfulUrl("")) |> ignore;*/
   /*FetchContent.doQuery(FetchContent.contentfulUrl("content_types")) |> ignore; */
   let callback = string => {
-    let optEntries = DecodeJSON.parseEntries(string);
+    Js.log2("reply", string);
+    let optEntries = Methods.parseEntries(string);
     switch (optEntries) {
     | Some(entries) => Array.iter(Js.log, entries.items)
     | _ => ()
     };
   };
-  let jsonPromise =
-    FetchContent.doQuery(FetchContent.queryEntriesUrl("method"), callback);
+  FetchContent.doQuery(FetchContent.queryEntriesUrl("method"), callback);
   ();
 };
 
