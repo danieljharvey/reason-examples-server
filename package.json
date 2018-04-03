@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@glennsl/bs-jest": "^0.4.2",
+    "@glennsl/bs-json": "^1.2.0",
     "bs-fetch": "^0.2.1",
     "bs-node": "buckletypes/bs-node",
     "es6-promise": "^4.2.4",
